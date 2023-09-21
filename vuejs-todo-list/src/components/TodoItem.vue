@@ -1,15 +1,15 @@
-<script>
-
+<script setup>
 </script>
 
 <template>
-  <div>
-    <input type="text">
-    <p></p>
-    <button>Delete</button>
+  <div class="task">
+    <button type="checkbox"></button>
+    <p>List Item</p>
   </div>
 </template>
 
-<style>
-
+<style scoped>
+.task {
+  display: flex;
+}
 </style>
