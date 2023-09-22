@@ -1,10 +1,15 @@
 <script setup>
+
+const CreateTask = () => { 
+  console.log('hello');
+}
+
 </script>
 
 <template>
   <div class="create-task">
     <input type="text" placeholder="Write a task!">
-    <button>Submit</button>
+    <button @click="CreateTask">Submit</button>
   </div>
 </template>
 
@@ -12,9 +17,8 @@
   .create-task {
     display: flex;
     justify-content: center;
-    width: 100%;
     gap: 20px;
-    margin: 5%;
+    margin: 5% 0;
   }
 
   .create-task button{
@@ -23,10 +27,16 @@
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 300ms ease;
+  }
+  
+  .create-task button:hover {
+    background-color: rgb(28, 91, 174);
   }
 
+
   .create-task input{
-    flex-shrink: 0;
     padding: 0 10px;
     border: 1px solid rgb(150, 150, 150);
     border-radius: 5px;

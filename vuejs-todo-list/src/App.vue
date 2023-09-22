@@ -8,7 +8,6 @@
     <div class="list">
       <h1>To-Do List</h1>
       <TodoInput/>
-      <p>_____________________________</p>
       <TodoList/>
     </div>
   </main>
@@ -20,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 50vh;
   }  
 
   .list h1 {
@@ -33,6 +32,7 @@
     align-items: center;
     
     width: 50%;
+    min-width: 400px;
     margin: auto;
 
     background-color: #ffffff;
