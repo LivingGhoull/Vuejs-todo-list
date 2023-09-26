@@ -1,14 +1,24 @@
 <script setup>
+  import { reactive } from 'vue';
+  let taskMessege = ''
+  let listOfTasks = reactive([])
+  let index = 0
 
-const CreateTask = () => { 
-  console.log('hello');
-}
+  const emit = defineEmits(['customChange'])
 
+  const CreateTask = () => {  
+    listOfTasks.push({
+      id: index++,
+      task: taskMessege,
+      complete: false
+    })
+    emit('updateTasks', listOfTasks)  
+  }
 </script>
 
 <template>
   <div class="create-task">
-    <input type="text" placeholder="Write a task!">
+    <input v-model="taskMessege" type="text" placeholder="Write a task!">
     <button @click="CreateTask">Submit</button>
   </div>
 </template>
@@ -24,7 +34,7 @@ const CreateTask = () => {
   .create-task button{
     background-color: rgba(49,118,208,1);
     color: #ffffff;
-    border: none;
+    border: 1px solid rgb(28, 91, 174);
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
