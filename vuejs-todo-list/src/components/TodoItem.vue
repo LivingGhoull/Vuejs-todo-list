@@ -1,17 +1,23 @@
 <script setup>
+  import { reactive, ref } from 'vue';
 
+const props = defineProps(['task'])
+const id = props.task.id
+const messege = props.task.task
+let complete = ref(props.task.complete)
 
-const deleteTask = () => {
-  console.log('test');
+const taskComplete = () => { 
+  complete.value = !complete.value
 }
-
 </script>
 
 <template>
   <div class="task">
-    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-    <label for="vehicle1">task</label>
-    <button @click="deleteTask">Delete</button>
+    <div>
+      <input @click="taskComplete" type="checkbox" :id="id" name="vehicle1" value="Bike">
+      <label :class="{done: complete }" :for="id">{{ messege }}</label>
+    </div>
+    <button @click="$emit('remove')">Delete</button>
   </div>
 </template>
 
@@ -24,7 +30,9 @@ const deleteTask = () => {
   padding: 10px 0;
 }
 
-.task input {
+.task .done {
+  text-decoration: line-through;
+  color: gray;
 }
 
 .task button{

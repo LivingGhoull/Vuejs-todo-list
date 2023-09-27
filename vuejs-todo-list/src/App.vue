@@ -5,18 +5,17 @@
 
   let tasks = ref([]) 
 
-  const updateTasks = (newTasks) => {
-    tasks.value = newTasks
-  }
+  const UpdateTasks = (newTasks) => { tasks.value = newTasks }
+  const RemoveTask = (index) => { tasks.value.splice(index, 1) }
 </script>
 
 <template>
   <main>
     <div class="list">
       <h1>To-Do List</h1>
-      <TodoInput @updateTasks="updateTasks" />
-        <div class="task-holder" v-for="task in tasks" :key="task.id">
-          <TodoItem :task="task"/>
+      <TodoInput @updateTasks="UpdateTasks" />
+        <div class="task-holder" v-for="(task, i) in tasks" :key="task.id">
+          <TodoItem @remove="RemoveTask(i)" :task="task"/>
         </div>
     </div>
   </main>
